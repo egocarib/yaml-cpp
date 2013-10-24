@@ -17,6 +17,8 @@ namespace YAML
 		
 		int pos;
 		int line, column;
+        
+        bool is_null() const { return pos == -1 && line == -1 && column == -1; }
 		
 	private:
 		Mark(int pos_, int line_, int column_): pos(pos_), line(line_), column(column_) {}

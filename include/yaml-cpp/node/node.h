@@ -7,6 +7,7 @@
 
 
 #include "yaml-cpp/dll.h"
+#include "yaml-cpp/mark.h"
 #include "yaml-cpp/node/ptr.h"
 #include "yaml-cpp/node/type.h"
 #include "yaml-cpp/node/detail/iterator_fwd.h"
@@ -35,6 +36,7 @@ namespace YAML
 		Node(const Node& rhs);
 		~Node();
 		
+        Mark Mark() const;
 		NodeType::value Type() const;
 		bool IsDefined() const;
 		bool IsNull() const { return Type() == NodeType::Null; }

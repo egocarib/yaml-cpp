@@ -10,7 +10,7 @@ namespace YAML
 	{
 		std::string node_data::empty_scalar;
 
-		node_data::node_data(): m_isDefined(false), m_type(NodeType::Null), m_seqSize(0)
+		node_data::node_data(): m_isDefined(false), m_mark(Mark::null_mark()), m_type(NodeType::Null), m_seqSize(0)
 		{
 		}
 
@@ -20,6 +20,11 @@ namespace YAML
 				m_type = NodeType::Null;
 			m_isDefined = true;
 		}
+        
+        void node_data::set_mark(const Mark& mark)
+		{
+			m_mark = mark;
+ 		}
 
 		void node_data::set_type(NodeType::value type)
 		{

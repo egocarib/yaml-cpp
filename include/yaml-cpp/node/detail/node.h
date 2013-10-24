@@ -26,6 +26,7 @@ namespace YAML
 			const node_ref *ref() const { return m_pRef.get(); }
 			
 			bool is_defined() const { return m_pRef->is_defined(); }
+            const Mark& mark() const { return m_pRef->mark(); }
 			NodeType::value type() const { return m_pRef->type(); }
 			
 			const std::string& scalar() const { return m_pRef->scalar(); }
@@ -57,6 +58,10 @@ namespace YAML
 				if(rhs.is_defined())
 					mark_defined();
 				m_pRef->set_data(*rhs.m_pRef);
+			}
+            
+            void set_mark(const Mark& mark) {
+				m_pRef->set_mark(mark);
 			}
 				
 			void set_type(NodeType::value type) {

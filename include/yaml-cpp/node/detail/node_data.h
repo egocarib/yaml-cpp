@@ -25,12 +25,14 @@ namespace YAML
 			node_data();
 			
 			void mark_defined();
+            void set_mark(const Mark& mark);
 			void set_type(NodeType::value type);
 			void set_tag(const std::string& tag);
 			void set_null();
 			void set_scalar(const std::string& scalar);
 			
 			bool is_defined() const { return m_isDefined; }
+            const Mark& mark() const { return m_mark; }
 			NodeType::value type() const { return m_isDefined ? m_type : NodeType::Undefined; }
 			const std::string& scalar() const { return m_scalar; }
 			const std::string& tag() const { return m_tag; }
@@ -84,6 +86,7 @@ namespace YAML
 
 		private:
 			bool m_isDefined;
+            Mark m_mark;
 			NodeType::value m_type;
 			std::string m_tag;
 			

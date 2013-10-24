@@ -103,6 +103,8 @@ namespace YAML
 
 	private:
 		static const std::string build_what(const Mark& mark, const std::string& msg) {
+            if (mark.is_null())
+				return msg.c_str();
 			std::stringstream output;
 			output << "yaml-cpp: error at line " << mark.line+1 << ", column " << mark.column+1 << ": " << msg;
 			return output.str();
@@ -158,15 +160,15 @@ namespace YAML
 
     class BadConversion: public RepresentationException {
 	public:
-		BadConversion()
-        : RepresentationException(Mark::null_mark(), ErrorMsg::BAD_CONVERSION) {}
+		BadConversion(const Mark& mark_)
+        : RepresentationException(mark_, ErrorMsg::BAD_CONVERSION) {}
 	};
 
     template<typename T>
 	class TypedBadConversion: public BadConversion {
 	public:
-		TypedBadConversion()
-        : BadConversion() {}
+		TypedBadConversion(const Mark& mark_)
+        : BadConversion(mark_) {}
 	};
 
 	class BadDereference: public RepresentationException {
