@@ -22,7 +22,7 @@ namespace YAML
         if(m_pStream) {
             m_pStream->write(str.c_str(), str.size());
         } else {
-            m_buffer.resize(std::max(m_buffer.size(), m_pos + str.size() + 1));
+            m_buffer.resize((std::max)(m_buffer.size(), m_pos + str.size() + 1));
             std::copy(str.begin(), str.end(), &m_buffer[m_pos]);
         }
         
@@ -35,7 +35,7 @@ namespace YAML
         if(m_pStream) {
             m_pStream->write(str, size);
         } else {
-            m_buffer.resize(std::max(m_buffer.size(), m_pos + size + 1));
+            m_buffer.resize((std::max)(m_buffer.size(), m_pos + size + 1));
             std::copy(str, str + size, &m_buffer[m_pos]);
         }
         

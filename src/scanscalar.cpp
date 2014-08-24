@@ -110,7 +110,7 @@ namespace YAML
 
 			// update indent if we're auto-detecting
 			if(params.detectIndent && !foundNonEmptyLine)
-				params.indent = std::max(params.indent, INPUT.column());
+				params.indent = (std::max)(params.indent, INPUT.column());
 
 			// and then the rest of the whitespace
 			while(Exp::Blank().Matches(INPUT)) {
